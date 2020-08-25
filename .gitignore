@@ -1,0 +1,10 @@
+.stack-work/
+
+# Test report
+.hspec-failures
+
+# Backups
+*~
+
+# MacOS stuff
+.DS_Store

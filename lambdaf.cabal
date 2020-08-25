@@ -1,0 +1,111 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           lambdaf
+version:        0.1.0
+synopsis:       Compiler from lambda calculus to Brainfuck
+description:    Please see the README on GitHub at <https://github.com/lePerdu/lambdaf#README>
+category:       Languages
+homepage:       https://github.com/lePerdu/lambdaf#readme
+bug-reports:    https://github.com/lePerdu/lambdaf/issues
+author:         Zach Peltzer
+maintainer:     zdpeltzer@gmail.com
+copyright:      2020 Zach Peltzer
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/lePerdu/lambdaf
+
+library
+  exposed-modules:
+      LambdaF
+      LambdaF.Compiler
+      LambdaF.Language
+      LambdaF.Parser
+      LambdaF.Printer
+      LambdaF.StackIr
+      LambdaF.StackIr.Compiler
+      LambdaF.StackIr.Language
+      LambdaF.StackIr.Parser
+      LambdaF.StackIr.Printer
+      LambdaF.StackIr.StackBf
+  other-modules:
+      Paths_lambdaf
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , either
+    , hashable
+    , megaparsec
+    , microlens-platform
+    , mtl
+    , pinky
+    , prettyprinter
+    , text
+    , unordered-containers
+  default-language: Haskell2010
+
+executable lambdaf
+  main-is: Main.hs
+  other-modules:
+      Paths_lambdaf
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , either
+    , filepath
+    , hashable
+    , lambdaf
+    , megaparsec
+    , microlens-platform
+    , mtl
+    , optparse-applicative
+    , pinky
+    , prettyprinter
+    , text
+    , unordered-containers
+  default-language: Haskell2010
+
+test-suite lambdaf-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      LambdaF.StackIr.CompilerSpec
+      LambdaF.StackIr.FunctionSpec
+      LambdaF.StackIr.InstrSpec
+      LambdaF.StackIr.TestUtils
+      Paths_lambdaf
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , base >=4.7 && <5
+    , containers
+    , either
+    , hashable
+    , hspec
+    , lambdaf
+    , megaparsec
+    , microlens-platform
+    , mtl
+    , pinky
+    , prettyprinter
+    , quickcheck-instances
+    , text
+    , unordered-containers
+  default-language: Haskell2010

@@ -1,0 +1,77 @@
+name:                lambdaf
+version:             0.1.0
+github:              "lePerdu/lambdaf"
+license:             BSD3
+author:              "Zach Peltzer"
+maintainer:          "zdpeltzer@gmail.com"
+copyright:           "2020 Zach Peltzer"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            Compiler from lambda calculus to Brainfuck
+category:            Languages
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:
+  Please see the README on GitHub at <https://github.com/lePerdu/lambdaf#README>
+
+dependencies:
+- base >= 4.7 && < 5
+- containers
+- either
+- hashable
+- megaparsec
+- microlens-platform
+- mtl
+- pinky
+- prettyprinter
+- text
+- unordered-containers
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - LambdaF
+  - LambdaF.Compiler
+  - LambdaF.Language
+  - LambdaF.Parser
+  - LambdaF.Printer
+  - LambdaF.StackIr
+  - LambdaF.StackIr.Compiler
+  - LambdaF.StackIr.Language
+  - LambdaF.StackIr.Parser
+  - LambdaF.StackIr.Printer
+  - LambdaF.StackIr.StackBf
+
+executables:
+  lambdaf:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - either
+    - filepath
+    - lambdaf
+    - optparse-applicative
+
+tests:
+  lambdaf-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hspec
+    - lambdaf
+    - QuickCheck
+    - quickcheck-instances

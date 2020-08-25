@@ -1,0 +1,8 @@
+cradle:
+  stack:
+  - path: "src"
+    component: "lambdaf:lib"
+  - path: "app"
+    component: "lambdaf:exe:lambdaf"
+  - path: "test"
+    component: "lambdaf:test:lambdaf-test"
